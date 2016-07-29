@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+	<head>
+		<title>RentMate calculator</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Calculator for RentMate">
+		<meta name="author" content="Kiran Bhadury">
+		<!--Oh why is css so finicky-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="RMCSS.css">
+	</head>
+	
+	<body>
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="RentMate.html">RentMate</a>
+			</div>
+			<div class="container">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#rent">Rent</a></li>
+					<li><a href="#utilities">Utilities</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<div class="container-fluid text-center">
+			<h2>I want to...</h2>
+		</div>
+		
+		<div class="container">
+			<a href="#rent">
+				<div class="jumbotron calc-pg">
+				<h1>Calculate Rent</h1>
+				</div>
+			</a>
+		</div>
+		
+		<div class="container">
+			<a href="#utilities">
+				<div class="jumbotron util-pg">
+					<h1>Calculate Utilities</h1>
+				</div>
+			</a>
+		</div>
+		
+		<div class="container">
+		
+			<h2 id="rent">Calculate Rent</h2>
+			
+			<div class="row input-row-border" id="rent-amt-row">
+				<div class="col-md-4">
+					<h4>What's the rent on the apartment?</h4>
+					<form>
+						<div class="form-group">
+							<label for="rent-amt">Rent ($)</label>
+							<input class="form-control" type="number" id="rent-amt">
+						</div>
+					</form>
+				</div>
+			</div>
+			
+			<div class="row input-row-border" id="name-sqft-row">
+				<div class="col-md-7">
+					<h4>Who are your roommates, and how much square footage do they claim?</h4>
+					<h5>Don't forget to include yourself!</h5>
+					<ol id="rmmt-list"> <!--This will be filled in by the user-->
+					</ol>
+					<form class="form-inline">
+						<div class="form-group">
+							<label for="name">Name:</label>
+							<input class="form-control" type="text" id="name">
+						</div>
+						<div class="form-group">
+							<label for="sqft">Square feet:</label>
+							<input class="form-control" type="number" id="sqft">
+						</div>
+						<button class="btn btn-success" id="name-sqft-btn" disabled="disabled">Add</button>
+					</form>
+				</div>
+				<div class="col-md-5" id="rent-result">
+					<!--This will be filled by the results-->
+				</div>
+			</div>
+			
+			<div class="row form-btns-row">
+				<div class="col-md-4">
+				<button class="btn btn-success form-button" id="submit-rent" disabled="disabled">Submit</button>
+				<button class="btn btn-danger form-button" id="reset-rent" disabled="disabled">Reset</button>
+				</div>
+			</div>
+			
+		</div> <!--container-->
+		
+		<div class="container">
+			<h2 id="utilities">Calculate Utilities</h2>
+		</div>
+		
+		<footer>
+			<p>
+				Created by Kiran Bhadury.
+				<a href="github"><img src="RMImages/GitHub-Mark-32px.png" height="16px"></a>
+			</p>
+		</footer>
+		
+		<!--Load scripts-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="RMJS.js"></script>
+	</body>
+</html>
