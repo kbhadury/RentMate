@@ -24,7 +24,7 @@ p{ /*Justify all paragraphs*/
 	/*background-color: #00b3b3; /*Aqua green*/
 	text-align: center;
 	color: #4d94ff;
-	background-image: url("apts3.jpg");
+	background-image: url("RentMate/mainpage.jpg");
 	background-size: cover;
 	padding-bottom: 192px;
 }
@@ -32,14 +32,14 @@ p{ /*Justify all paragraphs*/
 .jumbotron.calc-pg{
 	text-align: center;
 	color: #000000;
-	background-image: url("rentsheet.png");
+	background-image: url("RentMate/rentsheet.png");
 	background-size: cover;
 }
 
 .jumbotron.util-pg{
 	text-align: center;
 	color: #000000;
-	background-image: url("utility.png");
+	background-image: url("RentMate/utility.png");
 	background-size: cover;
 }
 
