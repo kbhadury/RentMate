@@ -1,0 +1,143 @@
+.testdiv1{ /*Add this class to highlight an element red*/
+	background-color: #ff0000;
+}
+
+.testdiv2{ /*Add this class to highlight an element green*/
+	background-color: #00ff00;
+}
+
+body{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 16px;
+	background-color: #f2f2f2; /*Off-white*/
+}
+
+p{ /*Justify all paragraphs*/
+	text-align: justify;
+}
+
+.navbar{
+	background-color: #f2f2f2;
+}
+
+.jumbotron.main-pg{
+	/*background-color: #00b3b3; /*Aqua green*/
+	text-align: center;
+	color: #4d94ff;
+	background-image: url("apts3.jpg");
+	background-size: cover;
+	padding-bottom: 192px;
+}
+
+.jumbotron.calc-pg{
+	text-align: center;
+	color: #000000;
+	background-image: url("rentsheet.png");
+	background-size: cover;
+}
+
+.jumbotron.util-pg{
+	text-align: center;
+	color: #000000;
+	background-image: url("utility.png");
+	background-size: cover;
+}
+
+/*The button on the main page*/
+.try-it{
+	background-color: #4d94ff; /*Light blue*/
+	color: #ffffff;
+	transition-duration: 0.4s;
+}
+
+.try-it:hover{
+	background-color: #1a75ff; /*Darker blue*/
+	color: #ffffff;
+}
+
+.try-it:focus{
+	background-color: #1a75ff;
+	color: #ffffff;
+}
+
+.try-it:focus:active{
+	background-color: #005ce6; /*Very dark blue*/
+	color: #ffffff;
+}
+
+.try-it{
+	width: 50%;
+	font-size: 1.25em;
+	margin-top: 10px;
+}
+
+.main-pg-img{
+	/*Attempt to center image*/
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+}
+
+/*Tech carousel*/
+.tech{
+	text-align: center;
+}
+
+.tech-slide{
+	display: none; /*Hide by default*/
+	/*Center image LR, fix top*/
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+}
+
+.tech-slide-active{
+	display: block;
+	cursor: pointer;
+}
+
+.tech-bullet{
+	display: inline;
+	font-size: 24px;
+	color: #999999;
+}
+
+.tech-bullet-active{
+	color: #000000;
+}
+
+.code{
+	font-family: monospace;
+}
+
+/*Calculation page*/
+.input-row-border{
+	border-left: 5px solid gray;
+}
+
+.form-button{
+	width: 40%;
+}
+
+.form-btns-row{
+	margin-top: 40px;
+	margin-bottom: 20px;
+}
+
+#rent-result{
+	border: 2px solid #1a75ff;
+	border-radius: 5px;
+	display: none; /*Hide by default*/
+	background-color: #cce0ff;
+}
+
+footer{
+	margin-top: 20px;
+	margin-left: 30px;
+	color: #999999;
+}
+
+footer a{
+	margin-left: 20px;
+}
