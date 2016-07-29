@@ -32,7 +32,7 @@ p{ /*Justify all paragraphs*/
 .jumbotron.calc-pg{
 	text-align: center;
 	color: #000000;
-	background-image: url("RMImages/rentsheet.png");
+	background-image: url("RMImages/rentsheet.PNG");
 	background-size: cover;
 }
 
