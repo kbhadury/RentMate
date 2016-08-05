@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<meta name="description" content="Calculator for RentMate">
 		<meta name="author" content="Kiran Bhadury">
-		<!--Oh why is css so finicky-->
+		<!--Getting the hang of Bootstrap!-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" href="RMCSS.css">
 	</head>
@@ -47,40 +47,48 @@
 		
 			<h2 id="rent">Calculate Rent</h2>
 			
-			<div class="row input-row-border" id="rent-amt-row">
-				<div class="col-md-4">
-					<h4>What's the rent on the apartment?</h4>
-					<form>
-						<div class="form-group">
-							<label for="rent-amt">Rent ($)</label>
-							<input class="form-control" type="number" id="rent-amt">
+			<div class="row">
+				<div class="col-sm-7">
+					<!--Start nested cols-->
+					<div class="row">
+					
+						<div class="col-sm-12 input-col-border" id="rent-amt-col">
+							<h4>What's the rent on the apartment?</h4>
+							<form>
+								<div class="form-group">
+									<label for="rent-amt">Rent ($)</label>
+									<input class="form-control" type="number" id="rent-amt">
+								</div>
+							</form>
 						</div>
-					</form>
-				</div>
-			</div>
-			
-			<div class="row input-row-border" id="name-sqft-row">
-				<div class="col-md-7">
-					<h4>Who are your roommates, and how much square footage do they claim?</h4>
-					<h5>Don't forget to include yourself!</h5>
-					<ol id="rmmt-list"> <!--This will be filled in by the user-->
-					</ol>
-					<form class="form-inline">
-						<div class="form-group">
-							<label for="name">Name:</label>
-							<input class="form-control" type="text" id="name">
+
+						<div class="col-sm-12 input-col-border" id="name-sqft-col">
+							<h4>Who are your roommates, and how much square footage do they claim?</h4>
+							<h5>Don't forget to include yourself!</h5>
+							<ol id="rmmt-list"> <!--This will be filled in by the user-->
+							</ol>
+							<form class="form-inline">
+								<div class="form-group">
+									<label for="name">Name:</label>
+									<input class="form-control" type="text" id="name">
+								</div>
+								<div class="form-group">
+									<label for="sqft">Square feet:</label>
+									<input class="form-control" type="number" id="sqft">
+								</div>
+								<button class="btn btn-success" id="name-sqft-btn" disabled="disabled">Add</button>
+							</form>
 						</div>
-						<div class="form-group">
-							<label for="sqft">Square feet:</label>
-							<input class="form-control" type="number" id="sqft">
-						</div>
-						<button class="btn btn-success" id="name-sqft-btn" disabled="disabled">Add</button>
-					</form>
-				</div>
-				<div class="col-md-5" id="rent-result">
+						
+					</div> <!--inner row-->
+					<!--End nested cols-->
+				</div> <!--outer col-->
+				
+				<div class="col-sm-5" id="rent-result">
 					<!--This will be filled by the results-->
 				</div>
-			</div>
+				
+			</div> <!--outer row-->
 			
 			<div class="row form-btns-row">
 				<div class="col-md-4">
@@ -93,12 +101,12 @@
 		
 		<div class="container">
 			<h2 id="utilities">Calculate Utilities</h2>
-		</div>
+		</div> <!--container-->
 		
 		<footer>
 			<p>
 				Created by Kiran Bhadury.
-				<a href="github"><img src="RMImages/GitHub-Mark-32px.png" height="16px"></a>
+				<a href="https://github.com/kbhadury"><img src="RMImages/GitHub-Mark-32px.png" height="16px"></a>
 			</p>
 		</footer>
 		
