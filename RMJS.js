@@ -27,11 +27,11 @@ var main = function(){
 	/*Adds a green stripe when a valid number is entered*/
 	$("#rent-amt").keyup(function(){
 		if($(this).val() < 1){
-			$("#rent-amt-row").css("border-left", "5px solid gray");
+			$("#rent-amt-col").css("border-left", "5px solid gray");
 			rentValid = false;
 			$("#submit-rent").prop("disabled", true);
 		} else {
-			$("#rent-amt-row").css("border-left", "5px solid #00cc00");
+			$("#rent-amt-col").css("border-left", "5px solid #00cc00");
 			rentValid = true;
 			if(rmmtValid){
 				$("#submit-rent").prop("disabled", false);
@@ -66,7 +66,7 @@ var main = function(){
 		sqftList.push(sqft);
 		
 		//Add green stripe
-		$("#name-sqft-row").css("border-left", "5px solid #00cc00");
+		$("#name-sqft-col").css("border-left", "5px solid #00cc00");
 		
 		//Reset form
 		$("#name-sqft-btn").prop("disabled", true);
@@ -120,7 +120,7 @@ var main = function(){
 		$("#reset-rent, #submit-rent, #name-sqft-btn").prop("disabled", true);
 		$("#rmmt-list").empty();
 		$("#rent-amt, #name, #sqft").val("");
-		$(".input-row-border").css("border-left","5px solid gray");
+		$(".input-col-border").css("border-left","5px solid gray");
 		$("#rent-result").hide();
 	});
 	
