@@ -43,12 +43,13 @@
 			</a>
 		</div>
 		
-		<div class="container">
+		<div class="container" id="rent-container">
 		
 			<h2 id="rent">Calculate Rent</h2>
 			
 			<div class="row">
 				<div class="col-sm-7">
+					
 					<!--Start nested cols-->
 					<div class="row">
 					
@@ -65,43 +66,95 @@
 						<div class="col-sm-12 input-col-border" id="name-sqft-col">
 							<h4>Who are your roommates, and how much square footage do they claim?</h4>
 							<h5>Don't forget to include yourself!</h5>
-							<ol id="rmmt-list"> <!--This will be filled in by the user-->
+							<ol id="rmmt-list"> <!--This will be filled in with names+sqft-->
 							</ol>
 							<form class="form-inline">
 								<div class="form-group">
 									<label for="name">Name:</label>
 									<input class="form-control" type="text" id="name">
-								</div>
-								<div class="form-group">
 									<label for="sqft">Square feet:</label>
 									<input class="form-control" type="number" id="sqft">
 								</div>
-								<button class="btn btn-success" id="name-sqft-btn" disabled="disabled">Add</button>
+								<button class="btn btn-success" id="name-sqft-btn" disabled="disabled"><span class="glyphicon glyphicon-ok"></span></button>
 							</form>
 						</div>
 						
-					</div> <!--inner row-->
+						<div class="col-sm-6 pad-form-btns">
+							<button class="btn btn-success form-button" id="submit-rent" disabled="disabled">Submit</button>
+							<button class="btn btn-danger form-button" id="reset-rent" disabled="disabled">Reset</button>
+						</div>
+						
+					</div> <!--Inner row-->
 					<!--End nested cols-->
-				</div> <!--outer col-->
+				</div> <!--Outer col-->
 				
 				<div class="col-sm-5" id="rent-result">
 					<!--This will be filled by the results-->
 				</div>
 				
-			</div> <!--outer row-->
+			</div> <!--Outer row-->
 			
-			<div class="row form-btns-row">
-				<div class="col-md-4">
-				<button class="btn btn-success form-button" id="submit-rent" disabled="disabled">Submit</button>
-				<button class="btn btn-danger form-button" id="reset-rent" disabled="disabled">Reset</button>
-				</div>
-			</div>
-			
-		</div> <!--container-->
+		</div> <!--Container-->
 		
-		<div class="container">
+		<!--Colored bar to separate sections-->
+		<div class="container-fluid" style="background-color: #d9d9d9;">&nbsp;</div>
+		
+		<div class="container" id="utils-container">
+		
 			<h2 id="utilities">Calculate Utilities</h2>
-		</div> <!--container-->
+			
+			<div class="row">
+				<div class="col-sm-7">
+				
+					<!--Start nested cols-->
+					<div class="row" id="util-init-input">
+						<div class="col-sm-12 input-col-border" id="util-rms-col">
+							<h4>Please list the names of your roommates (including yourself!)</h4>
+							<h5>Must be comma-separated: Donald, Huey, Dewey, Louie</h5>
+							<form>
+								<div class="form-group">
+									<label for="util-rms">Roommates:</label>
+									<input class="form-control" type="text" id="util-rms" style="display:inline;">
+									<button class="btn btn-success" id="util-rms-btn" disabled="disabled"><span class="glyphicon glyphicon-ok"></span></button>
+								</div>
+							</form>
+						</div>
+						
+						<div class="col-sm-12 input-col-border" id="util-types-col" style="display:none;">
+							<h4>Which utilities need to be paid for, and who uses them?</h4>
+							<ol id="utils-list"> <!--This will be filled with utilities-->
+							</ol>
+							<form class="form-inline">
+								<div class="form-group">
+									<label for="util-type">Utility:</label>
+									<input class="form-control" type="text" id="util-type">
+									<label for="util-cost">$/month:</label>
+									<input class="form-control" type="number" id="util-cost">
+								</div>
+								<br>
+								<div class="form-group" id="checkbox-div"> <!--This will be filled in with names-->
+								</div>
+							</form>
+							<button class="btn btn-success" id="add-util-btn" disabled="disabled">Add utility</button>
+						</div>
+						
+						<div class="col-sm-6 pad-form-btns">
+							<button class="btn btn-success form-button" id="submit-util" disabled="disabled">Submit</button>
+							<button class="btn btn-danger form-button" id="reset-util" disabled="disabled">Reset</button>
+						</div>
+						
+					</div> <!--Inner row-->
+					<!--End nested cols-->
+				</div> <!--Outer col-->
+				
+				<div class="col-sm-5" id="util-result">
+					<table class="table" id="util-table"> <!--This will be filled by the results-->
+					</table>
+				</div>
+				
+			</div> <!--Outer row-->
+			
+		</div> <!--Container-->
 		
 		<footer>
 			<p>
