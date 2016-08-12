@@ -32,14 +32,14 @@ p{ /*Justify all paragraphs*/
 .jumbotron.calc-pg{
 	text-align: center;
 	color: #000000;
-	background-image: url("RMImages/rentsheet.PNG");
+	background-image: url("RMImages/rentsheet.png");
 	background-size: cover;
 }
 
 .jumbotron.util-pg{
 	text-align: center;
 	color: #000000;
-	background-image: url("RMImages/utility.png");
+	background-image: url("RMImages/utility.PNG");
 	background-size: cover;
 }
 
@@ -71,13 +71,10 @@ p{ /*Justify all paragraphs*/
 	margin-top: 10px;
 }
 
-.main-pg-img{
-	/*Attempt to center image*/
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 40px;
-	border: 10px solid #bfbfbf;
+.big-icon{
+	font-size: 125px;
+	text-align: center;	
+	padding-top: 60px;
 }
 
 /*Tech carousel*/
@@ -121,16 +118,41 @@ p{ /*Justify all paragraphs*/
 	width: 40%;
 }
 
-.form-btns-row{
+.pad-form-btns{
 	margin-top: 40px;
 	margin-bottom: 20px;
 }
 
+#rent-amt{
+	width: 50%;
+}
+
 #rent-result{
-	border: 2px solid #1a75ff;
+	border: 3px solid #66a3ff;
 	border-radius: 5px;
 	display: none; /*Hide by default*/
-	background-color: #cce0ff;
+	background-color: #e6e6e6;
+}
+
+#util-rms{
+	width: 65%;
+}
+
+#checkbox-div{
+	margin-right: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#checkbox-div input{
+	margin-left: 20px;
+	margin-right: 5px;
+}
+
+#util-result{
+	border: 3px solid #66a3ff;
+	border-radius: 5px;
+	display: none; /*Hide by default*/
+	background-color: #e6e6e6;
 }
 
 footer{
