@@ -13,7 +13,7 @@
 	<body>
 		<nav class="navbar navbar-default navbar-static-top">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.html">RentMate</a>
+				<a class="navbar-brand" href="index.html" style="color:#4d94ff;">RentMate</a>
 			</div>
 			<div class="container">
 				<ul class="nav navbar-nav navbar-right">
@@ -75,7 +75,7 @@
 									<label for="sqft">Square feet:</label>
 									<input class="form-control" type="number" id="sqft">
 								</div>
-								<button class="btn btn-success" id="name-sqft-btn" disabled="disabled"><span class="glyphicon glyphicon-ok"></span></button>
+								<button class="btn btn-success" id="name-sqft-btn" disabled="disabled">Add</button>
 							</form>
 						</div>
 						
@@ -89,7 +89,8 @@
 				</div> <!--Outer col-->
 				
 				<div class="col-sm-5" id="rent-result">
-					<!--This will be filled by the results-->
+					<table class="table" id="rent-table"><!--This will be filled by the results-->
+					</table>
 				</div>
 				
 			</div> <!--Outer row-->
@@ -97,7 +98,7 @@
 		</div> <!--Container-->
 		
 		<!--Colored bar to separate sections-->
-		<div class="container-fluid" style="background-color: #d9d9d9;">&nbsp;</div>
+		<div class="container-fluid separator" style="background-color:#c3def7;">&nbsp;</div>
 		
 		<div class="container" id="utils-container">
 		
@@ -158,8 +159,8 @@
 		
 		<footer>
 			<p>
-				Created by Kiran Bhadury.
-				<a href="https://github.com/kbhadury"><img src="RMImages/GitHub-Mark-32px.png" height="16px"></a>
+				Created by Kiran Bhadury
+				<a href="https://github.com/kbhadury"><img src="RMImages/GitHub-Mark-32px.png" height="16px" alt="github logo"></a>
 			</p>
 		</footer>
 		
