@@ -101,24 +101,32 @@ var main = function(){
 		//Deactivate submit button
 		$(this).prop("disabled", true);
 		
-		var resultListObj = $("#rent-result");
+		var resultTable = $("#rent-table");
 		
 		//Remove existing results from HTML but keep the array data
-		resultListObj.empty();
+		resultTable.empty();
 		
 		//Calculate and display results
 		var totalSqft = calcTotalSqft(sqftList);
 		var rent = $("#rent-amt").val();
 		
-		//Generate result text
-		resultListObj.append("<h4>Rent:</h4>");
+		//Generate result table
+		resultTable.append("<caption>Rent ($/mo)</caption>");
+		
+		//Create headers
+		var tableRow = $("<tr>");
+		tableRow.append("<th>Person</th><th>Rent</th>");
+		resultTable.append(tableRow);
+		
 		for(i=0; i<sqftList.length; ++i){
+			tableRow = $("<tr>");
 			var amt = parseFloat((sqftList[i]/totalSqft) * rent).toFixed(2);
-			var item = $("<h4>").text(rentNames[i] + ": $" + amt + " per month");
-			item.appendTo(resultListObj);
+			tableRow.append($("<td>").text(rentNames[i]));
+			tableRow.append($("<td>").text(amt));
+			resultTable.append(tableRow);
 		}
 		
-		resultListObj.fadeIn(500);
+		$("#rent-result").fadeIn(500);
 	});
 	
 	/* Reset entire form */
@@ -285,18 +293,19 @@ var main = function(){
 		
 		//Create headers
 		var tableRow = $("<tr>");
-		tableRow.append("<th>Person</th>");
-		for(i=0; i<utilTypes.length; ++i){
-			tableRow.append($("<th>").text(utilTypes[i]));
+		tableRow.append("<th>Utility</th>");
+		for(i=0; i<utilNames.length; ++i){
+			tableRow.append($("<th>").text(utilNames[i]));
 		}
 		resultTable.append(tableRow);
 		
 		//Fill table
-		for(j=0; j<utilNames.length; ++j){
+		for(j=0; j<utilTypes.length; ++j){
 			tableRow = $("<tr>");
-			tableRow.append($("<td>").text(utilNames[j]));
-			for(k=0; k<utilTypes.length; ++k){
-				tableRow.append($("<td>").text(utilResults[j][k]));
+			var utilIcon = getUtilIcon(utilTypes[j]);
+			tableRow.append($("<th>").text(" " + utilTypes[j]).prepend(utilIcon));
+			for(k=0; k<utilNames.length; ++k){
+				tableRow.append($("<td>").text(utilResults[k][j]));
 			}
 			resultTable.append(tableRow);
 		}
@@ -327,13 +336,17 @@ var main = function(){
 	});
 	
 /*?*/
-	$(".code-click").hover(function(){
+	$(".x").hover(function(){
 		$(".non-code").toggle();
 		$(".code").toggle();
 	});
 };
 
-/*Returns total number of sqft to consider*/
+/*
+Returns total number of sqft to consider
+Input: array of numbers representing each roommate's claimed space
+Output: sum total of everyone's claimed space
+*/
 function calcTotalSqft(sqfts){
 	var totalSqft = 0;
 	for(i=0; i<sqfts.length; ++i){
@@ -342,6 +355,48 @@ function calcTotalSqft(sqfts){
 	
 	return totalSqft;
 };
+
+/*
+Returns a jQuery span object containing a glyphicon related to the utility.
+Ex: "water" returns a blue drop icon
+Input: string with utility name
+Output: relevant glyphicon in a span object.  If no icon matches, an
+empty <span> is returned
+*/ 
+function getUtilIcon(util){
+	util = util.toUpperCase(); //Standardize
+	
+	if(util === "WATER"){
+		return $("<span class='glyphicon glyphicon-tint' style='color:#66ccff'></span>");
+	}
+	if(util === "GAS" || util === "HEAT" || util === "HEATING"){
+		return $("<span class='glyphicon glyphicon-fire' style='color:#ff6600'></span>");
+	}
+	if(util === "TRASH"){
+		return $("<span class='glyphicon glyphicon-trash' style='color:#808080'></span>");
+	}
+	if(util === "SEWAGE"){
+		return $("<span class='glyphicon glyphicon-tint' style='color:#888844'></span>");
+	}
+	if(util === "ELECTRIC" || util === "ELECTRICITY"){
+		return $("<span class='glyphicon glyphicon-flash' style='color:#f2f20d'></span>");
+	}
+	if(util === "CABLE"){
+		return $("<span class='glyphicon glyphicon-picture' style='color:#00b359'></span>");
+	}
+	if(util === "INTERNET" || util === "DSL" || util === "BROADBAND"){
+		return $("<span class='glyphicon glyphicon-globe' style='color:#0080ff'></span>");
+	}
+	if(util === "PHONE" || util === "TELEPHONE" || util === "LANDLINE"){
+		return $("<span class='glyphicon glyphicon-earphone' style='color:#ff4d4d'></span>");
+	}
+	if(util === "HOA" || util === "HOME OWNERS ASSOCIATION"){
+		return $("<span class='glyphicon glyphicon-home' style='color:#4d94ff'></span>");
+	}
+
+	
+	return $("<span class='glyphicon glyphicon-ok-circle' style='color:#d9d9d9'></span>"); //Default
+}
 
 /*Let's go!*/
 $(document).ready(main);
