@@ -47,14 +47,14 @@ footer a{
 .jumbotron.calc-pg{
 	text-align: center;
 	color: #000000;
-	background-image: url("RMImages/rentsheet.png");
+	background-image: url("RMImages/rent-sheet.jpg");
 	background-size: cover;
 }
 
 .jumbotron.util-pg{
 	text-align: center;
 	color: #000000;
-	background-image: url("RMImages/utility.PNG");
+	background-image: url("RMImages/utility.jpg");
 	background-size: cover;
 }
 
