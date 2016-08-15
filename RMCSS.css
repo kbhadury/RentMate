@@ -16,12 +16,27 @@ p{ /*Justify all paragraphs*/
 	text-align: justify;
 }
 
+footer{
+	margin-top: 20px;
+	margin-left: 30px;
+	color: #999999;
+}
+
+footer a{
+	margin-left: 20px;
+}
+
+.separator{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
 .navbar{
 	background-color: #f2f2f2;
+	margin-bottom: 0px;
 }
 
 .jumbotron.main-pg{
-	/*background-color: #00b3b3; /*Aqua green*/
 	text-align: center;
 	color: #4d94ff;
 	background-image: url("RMImages/mainpage.jpg");
@@ -71,10 +86,17 @@ p{ /*Justify all paragraphs*/
 	margin-top: 10px;
 }
 
-.big-icon{
-	font-size: 125px;
-	text-align: center;	
-	padding-top: 60px;
+.main-pg-text{
+	border-bottom: 5px double #a5cdf3;
+	padding-top: 20px;
+}
+
+.main-pg-img{
+	height: 240px;
+	display: block;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /*Tech carousel*/
@@ -87,7 +109,6 @@ p{ /*Justify all paragraphs*/
 	/*Center image LR, fix top*/
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 40px;
 }
 
 .tech-slide-active{
@@ -131,7 +152,7 @@ p{ /*Justify all paragraphs*/
 	border: 3px solid #66a3ff;
 	border-radius: 5px;
 	display: none; /*Hide by default*/
-	background-color: #e6e6e6;
+	background-color: #ffffff;
 }
 
 #util-rms{
@@ -152,15 +173,14 @@ p{ /*Justify all paragraphs*/
 	border: 3px solid #66a3ff;
 	border-radius: 5px;
 	display: none; /*Hide by default*/
-	background-color: #e6e6e6;
+	background-color: #ffffff;
 }
 
-footer{
-	margin-top: 20px;
-	margin-left: 30px;
-	color: #999999;
+tr{ /*For some reason Bootstrap isn't doing this automatically*/
+	border-bottom: 1px solid #ddd;
 }
 
-footer a{
-	margin-left: 20px;
+th, td{
+	padding-bottom: 5px;
+	padding-top: 5px;
 }
