@@ -1,25 +1,17 @@
 var main = function(){	
-/* MAIN PAGE */
-	/*Carousel on the main page*/
-	$(".tech-slide").click(function(){
-		//Photos
-		var currentSlide = $(".tech-slide-active");
-		var nextSlide = currentSlide.next(".tech-slide");
-		if(nextSlide.length == 0){ //Loop around
-			nextSlide = $(".tech-slide").first();
+/* MAIN PAGE */	
+	$(".tech-slide").hover(
+		function(){
+			$(this).animate({
+				opacity: 1
+			}, 500);
+		},
+		function(){
+			$(this).animate({
+				opacity: .5
+			}, 500);
 		}
-		currentSlide.removeClass("tech-slide-active");
-		nextSlide.addClass("tech-slide-active");
-		
-		//Bullet icons
-		var currentBullet = $(".tech-bullet-active");
-		var nextBullet = currentBullet.next(".tech-bullet");
-		if(nextBullet.length == 0){
-			nextBullet = $(".tech-bullet").first();
-		}
-		currentBullet.removeClass("tech-bullet-active");
-		nextBullet.addClass("tech-bullet-active");
-	});
+	);
 	
 /* CALCULATE RENT */
 	//Determine if the Submit and Reset buttons should be active
