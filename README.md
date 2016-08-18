@@ -1,4 +1,6 @@
 # RentMate
+https://kbhadury.github.io/RentMate
+
 Split up rent and utility costs!
 
 I'm trying to get some experience with web development, and since I'm sharing an apartment with friends next year I figured
