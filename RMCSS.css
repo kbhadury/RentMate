@@ -99,31 +99,17 @@ footer a{
 	margin-right: auto;
 }
 
-/*Tech carousel*/
 .tech{
 	text-align: center;
+	padding-top: 40px;
 }
 
 .tech-slide{
-	display: none; /*Hide by default*/
-	/*Center image LR, fix top*/
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.tech-slide-active{
-	display: block;
-	cursor: pointer;
-}
-
-.tech-bullet{
+	height: 80px;
 	display: inline;
-	font-size: 24px;
-	color: #999999;
-}
-
-.tech-bullet-active{
-	color: #000000;
+	margin-left: 10px;
+	margin-right: 10px;
+	opacity: .5;
 }
 
 .code{
