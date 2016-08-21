@@ -3,12 +3,12 @@ var main = function(){
 	$(".tech-slide").hover(
 		function(){
 			$(this).animate({
-				opacity: 1
+				opacity: "1",
 			}, 500);
 		},
 		function(){
 			$(this).animate({
-				opacity: .5
+				opacity: ".5",
 			}, 500);
 		}
 	);
@@ -25,12 +25,13 @@ var main = function(){
 	
 	var rentValid = false;
 	var rmmtValid = false;
-	var rentNames = [];
+	var rentRmts = [];
 	var sqftList = [];
+	var roomCounter = 1;
 	
 	/*Adds a green stripe when a valid number is entered*/
 	$("#rent-amt").keyup(function(){
-		if($(this).val() < 0){
+		if($(this).val() < 1){
 			$("#rent-amt-col").css("border-left", "5px solid gray");
 			rentValid = false;
 			$("#submit-rent").prop("disabled", true);
@@ -44,8 +45,8 @@ var main = function(){
 	});
 	
 	/*Input validation for adding roommates*/
-	$("#name, #sqft").keyup(function(){
-		if($("#name").val().length == 0 || $("#sqft").val() < 1){
+	$("#names, #sqft").keyup(function(){
+		if($("#names").val().length == 0 || $("#sqft").val() < 1){
 			$("#name-sqft-btn").prop("disabled", true);
 		} else {
 			$("#name-sqft-btn").prop("disabled", false);
@@ -57,23 +58,37 @@ var main = function(){
 		//Disable button
 		$(this).prop("disabled", true);
 		
-		var name = $("#name").val();
+		var names = $("#names").val().split(",");
+		var numNames = names.length;
 		var sqft = parseFloat($("#sqft").val());
+		var indivSqft = sqft/numNames;
 		
-		//Add to arrays
-		rentNames.push(name);
-		sqftList.push(sqft);
+		//If new name, push to arrays.  Otherwise update current sqft info.
+		for(i=0; i<numNames; ++i){
+			names[i] = names[i].trim(); //Remove extra spaces
+			var nameIndex = rentRmts.indexOf(names[i]);
+			if(nameIndex == -1){
+				rentRmts.push(names[i]);
+				sqftList.push(indivSqft);
+			} else {
+				sqftList[nameIndex] += indivSqft;
+			}
+		}
 		
 		//Display on page
-		var entryStr = name + ", " + sqft + " sq. ft.";
+		var entryStr = "Room #" + roomCounter + ": " + sqft + " sq. ft.: " + names.join(", ");
 		var entry = $("<li>").text(entryStr);
-		entry.appendTo("#rmmt-list");
+		entry.appendTo("#room-list");
+		
+		//Update counters
+		++roomCounter;
+		$("#room-number").text("Room #" + roomCounter + ":");
 		
 		//Add green stripe
 		$("#name-sqft-col").css("border-left", "5px solid #00cc00");
 		
 		//Reset form
-		$("#name, #sqft").val("");
+		$("#names, #sqft").val("");
 		
 		//Check to see if Submit should be enabled
 		rmmtValid = true;
@@ -84,8 +99,8 @@ var main = function(){
 		//Enable reset button
 		$("#reset-rent").prop("disabled", false);
 		
-		//Give the "name" field focus (user convenience)
-		$("#name").focus();
+		//Give the "sqft" field focus (user convenience)
+		$("#sqft").focus();
 	});
 	
 	/*Perform calculations and display results*/
@@ -99,11 +114,11 @@ var main = function(){
 		resultTable.empty();
 		
 		//Calculate and display results
-		var totalSqft = calcTotalSqft(sqftList);
+		var totalSqft = calcSum(sqftList);
 		var rent = $("#rent-amt").val();
 		
 		//Generate result table
-		resultTable.append("<caption>Rent ($/mo)</caption>");
+		resultTable.append("<caption>Rent ($/month)</caption>");
 		
 		//Create headers
 		var tableRow = $("<tr>");
@@ -113,7 +128,7 @@ var main = function(){
 		for(i=0; i<sqftList.length; ++i){
 			tableRow = $("<tr>");
 			var amt = parseFloat((sqftList[i]/totalSqft) * rent).toFixed(2);
-			tableRow.append($("<td>").text(rentNames[i]));
+			tableRow.append($("<td>").text(rentRmts[i]));
 			tableRow.append($("<td>").text(amt));
 			resultTable.append(tableRow);
 		}
@@ -129,43 +144,49 @@ var main = function(){
 		//Reset vars
 		rentValid = false;
 		rmmtValid = false;
-		rentNames = [];
+		rentRmts = [];
 		sqftList = [];
+		roomCounter = 1;
 		
 		//Reset elements
-		$("#rmmt-list").empty();
-		$("#rent-amt, #name, #sqft").val("");
+		$("#room-list").empty();
+		$("#room-number").text("Room #1:");
+		$("#rent-amt, #names, #sqft").val("");
 		$("#rent-container").find(".input-col-border").css("border-left", "5px solid gray");
 		$("#rent-result").fadeOut(500);
 	});
 	
 /* CALCULATE UTILITIES */
 	
+	var utilRmts; //Array, set by input field
+	var utilTypes = [];
+	var utilResults = [];
+	var utilsValid = false;
+	var chxValid = true; //All selected by default
+	var utilCounter = 1;
+	
 	/*Add green stripe when input field is non-empty*/
-	$("#util-rms").keyup(function(){
+	$("#util-rmts").keyup(function(){
 		if($(this).val().length > 0){
-			$("#util-rms-col").css("border-left","5px solid #00cc00");
-			$("#util-rms-btn").prop("disabled", false);
+			$("#util-rmts-col").css("border-left","5px solid #00cc00");
+			$("#util-rmts-btn").prop("disabled", false);
 		} else {
-			$("#util-rms-col").css("border-left","5px solid gray");
-			$("#util-rms-btn").prop("disabled", true);
+			$("#util-rmts-col").css("border-left","5px solid gray");
+			$("#util-rmts-btn").prop("disabled", true);
 		}
 	});
 	
 	/*Parse list of names and create checkbox area*/
-	var utilNames;
-	var utilTypes = [];
-	var utilResults = [];
-	$("#util-rms-btn").click(function(){
+	$("#util-rmts-btn").click(function(){
 		//Don't allow spontaneous name changes
-		$("#util-rms, #util-rms-btn").prop("disabled", true);
+		$("#util-rmts, #util-rmts-btn").prop("disabled", true);
 		
-		utilNames = $("#util-rms").val().split(",");
-		var numNames = utilNames.length;
+		utilRmts = $("#util-rmts").val().split(",");
+		var numNames = utilRmts.length;
 		
 		//Trim extra spaces
 		for(i=0; i<numNames; ++i){
-			utilNames[i] = utilNames[i].trim();
+			utilRmts[i] = utilRmts[i].trim();
 		}
 		
 		//Initialize results array (see below for details)
@@ -176,7 +197,7 @@ var main = function(){
 		//Create checkboxes (still hidden at this point)
 		var chxArea = $("#checkbox-div");
 		for(k=0; k<numNames; ++k){
-			var name = utilNames[k];
+			var name = utilRmts[k];
 			var label = $("<label>").text(name);
 			var box = $("<input>").attr("type", "checkbox").prop("checked", true); //All selected by default
 			label.prepend(box); //Put text to the left of box
@@ -192,10 +213,7 @@ var main = function(){
 		$("#reset-util").prop("disabled", false);
 	});
 	
-	/*Determine if Add Utility button should be enabled*/
-	var utilsValid = false;
-	var chxValid = true; //All selected by default
-	
+	/*Determine if Add Utility button should be enabled*/	
 	$("#util-type, #util-cost").keyup(function(){
 		if($("#util-type").val().length == 0 || $("#util-cost").val() < 1){
 			utilsValid = false;
@@ -222,10 +240,10 @@ var main = function(){
 	
 	/*
 	Add utility data to list and start creating results list.
-	utilResults contains one array per name at the same index as the name in utilNames.
+	utilResults contains one array per name at the same index as the name in utilRmts.
 	These arrays hold the cost per person of the utilities in the order they were entered.
 	Ex:
-	utilNames: [Jim, John, Jones]
+	utilRmts: [Jim, John, Jones]
 	utilTypes: [Water, Electricity]
 	utilResults: [[100,200],[0,200],[100,0]]
 	Jim: $100 water, $200 electricity
@@ -241,7 +259,7 @@ var main = function(){
 		//Parse inputs
 		var utilType = $("#util-type").val();
 		utilTypes.push(utilType);	
-		var cost = parseFloat($("#util-cost").val()).toFixed(2);
+		var cost = parseFloat($("#util-cost").val());
 		var boxes = $("input:checkbox");
 		var users = $("input:checked");
 		var costPerUser = cost/users.length; //Length won't be 0
@@ -249,15 +267,20 @@ var main = function(){
 		//Cycle through boxes and update results array
 		boxes.each(function(index){
 			if($(this).prop("checked")){
-				utilResults[index].push(costPerUser.toFixed(2));
+				utilResults[index].push(costPerUser);
 			} else {
 				utilResults[index].push(0);
 			}
 		});
 		
-		//Add to utils-list
-		var listStr = utilType + ", $" + cost + " per month"
-		$("#utils-list").append($("<li>").text(listStr));
+		//Add to util-list
+		var listStr = "Utility #" + utilCounter + ": " + utilType + ", $" + cost.toFixed(2) + " per month"
+		$("#util-list").append($("<li>").text(listStr));
+		
+		//Update counters
+		++utilCounter;
+		$("#util-number").text("Utility #" + utilCounter + ":");
+		
 		
 		//Add green stripe
 		$("#util-types-col").css("border-left", "5px solid #00cc00");
@@ -281,13 +304,13 @@ var main = function(){
 		//Remove existing HTML
 		resultTable.empty();
 		
-		resultTable.append("<caption>Utilities ($/mo)</caption>");
+		resultTable.append("<caption>Utilities ($/month)</caption>");
 		
 		//Create headers
 		var tableRow = $("<tr>");
 		tableRow.append("<th>Utility</th>");
-		for(i=0; i<utilNames.length; ++i){
-			tableRow.append($("<th>").text(utilNames[i]));
+		for(i=0; i<utilRmts.length; ++i){
+			tableRow.append($("<th>").text(utilRmts[i]));
 		}
 		resultTable.append(tableRow);
 		
@@ -296,11 +319,20 @@ var main = function(){
 			tableRow = $("<tr>");
 			var utilIcon = getUtilIcon(utilTypes[j]);
 			tableRow.append($("<th>").text(" " + utilTypes[j]).prepend(utilIcon));
-			for(k=0; k<utilNames.length; ++k){
-				tableRow.append($("<td>").text(utilResults[k][j]));
+			for(k=0; k<utilRmts.length; ++k){
+				tableRow.append($("<td>").text(utilResults[k][j].toFixed(2)));
 			}
 			resultTable.append(tableRow);
 		}
+		
+		//Add Totals row
+		tableRow = $("<tr>");
+		tableRow.append("<th>Total cost</th>");
+		for(m=0; m<utilRmts.length; ++m){
+			var sum = calcSum(utilResults[m]);
+			tableRow.append($("<td>").text(sum.toFixed(2)));
+		}
+		resultTable.append(tableRow);
 		
 		$("#util-result").fadeIn(500);
 	});
@@ -310,19 +342,21 @@ var main = function(){
 		//Disable buttons
 		$("#reset-util, #submit-util, #add-util-btn").prop("disabled", true);
 		
-		//Reset vars (utilNames gets reset automatically by button)
+		//Reset vars (utilRmts gets reset automatically by button)
 		utilsValid = false;
 		chxValid = true;
 		utilTypes = [];
 		utilResults = [];
+		utilCounter = 1;
 		
 		//Reset elements
 		$("#util-types-col").slideUp(500);
 		$("#checkbox-div").empty();
-		$("#util-type, #util-cost, #util-rms").val("");
-		$("#utils-list").empty();
+		$("#util-type, #util-cost, #util-rmts").val("");
+		$("#util-list").empty();
+		$("#util-number").text("Utility	 #1:");
 		$("#utils-container").find(".input-col-border").css("border-left", "5px solid gray");
-		$("#util-rms").prop("disabled", false);	
+		$("#util-rmts").prop("disabled", false);	
 		
 		$("#util-result").fadeOut(500);
 	});
@@ -335,25 +369,24 @@ var main = function(){
 };
 
 /*
-Returns total number of sqft to consider
-Input: array of numbers representing each roommate's claimed space
-Output: sum total of everyone's claimed space
+Returns sum of array values
+Input: 1D array of numbers
+Output: sum total of array values
 */
-function calcTotalSqft(sqfts){
-	var totalSqft = 0;
-	for(i=0; i<sqfts.length; ++i){
-		totalSqft += sqfts[i];
+function calcSum(arr){
+	var total = 0;
+	for(i=0; i<arr.length; ++i){
+		total += arr[i];
 	}
-	
-	return totalSqft;
+	return total;
 };
 
 /*
 Returns a jQuery span object containing a glyphicon related to the utility.
 Ex: "water" returns a blue drop icon
 Input: string with utility name
-Output: relevant glyphicon in a span object.  If no icon matches, an
-empty <span> is returned
+Output: relevant glyphicon in a span object.  If no icon matches, a
+default <span> is returned
 */ 
 function getUtilIcon(util){
 	util = util.toUpperCase(); //Standardize
@@ -386,8 +419,8 @@ function getUtilIcon(util){
 		return $("<span class='glyphicon glyphicon-home' style='color:#4d94ff'></span>");
 	}
 
-	
-	return $("<span class='glyphicon glyphicon-ok-circle' style='color:#d9d9d9'></span>"); //Default
+	//Default
+	return $("<span class='glyphicon glyphicon-ok-circle' style='color:#d9d9d9'></span>");
 }
 
 /*Let's go!*/
