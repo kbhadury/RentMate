@@ -62,6 +62,9 @@ footer a{
 .try-it{
 	background-color: #4d94ff; /*Light blue*/
 	color: #ffffff;
+	width: 50%;
+	font-size: 1.25em;
+	margin-top: 10px;
 	transition-duration: 0.4s;
 }
 
@@ -78,12 +81,6 @@ footer a{
 .try-it:focus:active{
 	background-color: #005ce6; /*Very dark blue*/
 	color: #ffffff;
-}
-
-.try-it{
-	width: 50%;
-	font-size: 1.25em;
-	margin-top: 10px;
 }
 
 .main-pg-text{
@@ -130,19 +127,16 @@ footer a{
 	margin-bottom: 20px;
 }
 
-#rent-amt{
-	width: 50%;
+#room-list, #util-list{
+	list-style: none;
+	padding-left: 0px;
 }
 
-#rent-result{
+#rent-result, #util-result{
 	border: 3px solid #66a3ff;
 	border-radius: 5px;
 	display: none; /*Hide by default*/
 	background-color: #ffffff;
-}
-
-#util-rms{
-	width: 65%;
 }
 
 #checkbox-div{
@@ -153,13 +147,6 @@ footer a{
 #checkbox-div input{
 	margin-left: 20px;
 	margin-right: 5px;
-}
-
-#util-result{
-	border: 3px solid #66a3ff;
-	border-radius: 5px;
-	display: none; /*Hide by default*/
-	background-color: #ffffff;
 }
 
 tr{ /*For some reason Bootstrap isn't doing this automatically*/
