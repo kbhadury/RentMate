@@ -30,7 +30,7 @@
 		<div class="container">
 			<a href="#rent">
 				<div class="jumbotron calc-pg">
-				<h1>Calculate Rent</h1>
+				<h1>Divide Rent</h1>
 				</div>
 			</a>
 		</div>
@@ -38,14 +38,14 @@
 		<div class="container">
 			<a href="#utilities">
 				<div class="jumbotron util-pg">
-					<h1>Calculate Utilities</h1>
+					<h1>Divide Utilities</h1>
 				</div>
 			</a>
 		</div>
 		
 		<div class="container" id="rent-container">
 		
-			<h2 id="rent">Calculate Rent</h2>
+			<h2 id="rent">Divide Rent</h2>
 			
 			<div class="row">
 				<div class="col-sm-7">
@@ -57,25 +57,26 @@
 							<h4>What's the rent on the apartment?</h4>
 							<form>
 								<div class="form-group">
-									<label for="rent-amt">Rent ($)</label>
-									<input class="form-control" type="number" id="rent-amt">
+									<label for="rent-amt">Rent ($/month)</label>
+									<input class="form-control" type="number" id="rent-amt" style="width:50%;">
 								</div>
 							</form>
 						</div>
 
 						<div class="col-sm-12 input-col-border" id="name-sqft-col">
-							<h4>Add each roommate's name and the amount of square footage they claim</h4>
-							<h5>Don't forget to include yourself!</h5>
-							<ol id="rmmt-list"> <!--This will be filled in with names+sqft-->
-							</ol>
+							<h4>How large are the rooms, and who occupies each one?</h4>
+							<h5>Occupants must be comma-separated (example: Tom, Jerry)</h5>
+							<ul id="room-list" style="list-style-type: none;"> <!--This will be filled in with names+sqft-->
+							</ul>
+							<p id="room-number">Room #1:</p>
 							<form class="form-inline">
 								<div class="form-group">
-									<label for="name">Name:</label>
-									<input class="form-control" type="text" id="name">
 									<label for="sqft">Square feet:</label>
 									<input class="form-control" type="number" id="sqft">
+									<label for="names">Occupant(s):</label>
+									<input class="form-control" type="text" id="names">
 								</div>
-								<button class="btn btn-success" id="name-sqft-btn" disabled="disabled" style="margin-top:20px;">Add roommate</button>
+								<button class="btn btn-success" id="name-sqft-btn" disabled="disabled" style="margin-top:20px;">Add room</button>
 							</form>
 						</div>
 						
@@ -102,30 +103,30 @@
 		
 		<div class="container" id="utils-container">
 		
-			<h2 id="utilities">Calculate Utilities</h2>
+			<h2 id="utilities">Divide Utilities</h2>
 			
 			<div class="row">
 				<div class="col-sm-7">
 				
 					<!--Start nested cols-->
 					<div class="row" id="util-init-input">
-						<div class="col-sm-12 input-col-border" id="util-rms-col">
+						<div class="col-sm-12 input-col-border" id="util-rmts-col">
 							<h4>Please list the names of your roommates (including yourself)</h4>
-							<h5>Must be comma-separated: Donald, Huey, Dewey, Louie</h5>
+							<h5>Must be comma-separated (example: Donald, Huey, Dewey, Louie)</h5>
 							<form>
 								<div class="form-group">
-									<label for="util-rms">Roommates:</label>
-									<input class="form-control" type="text" id="util-rms" style="display:inline;">
-									<button class="btn btn-success" id="util-rms-btn" disabled="disabled"><span class="glyphicon glyphicon-ok"></span></button>
+									<label for="util-rmts">Roommates:</label>
+									<input class="form-control" type="text" id="util-rmts" style="display:inline; width:65%;">
+									<button class="btn btn-success" id="util-rmts-btn" disabled="disabled"><span class="glyphicon glyphicon-ok"></span></button>
 								</div>
 							</form>
 						</div>
 						
 						<div class="col-sm-12 input-col-border" id="util-types-col" style="display:none;">
 							<h4>Which utilities need to be paid for, and who uses them?</h4>
-							<h5>Enter one utility at a time</h5>
-							<ol id="utils-list"> <!--This will be filled with utilities-->
-							</ol>
+							<ul id="util-list"> <!--This will be filled with utilities-->
+							</ul>
+							<p id="util-number">Utility #1:</p>
 							<form class="form-inline">
 								<div class="form-group">
 									<label for="util-type">Utility:</label>
