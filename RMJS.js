@@ -418,7 +418,7 @@ function getUtilIcon(util){
 	if(util === "HOA" || util === "HOME OWNERS ASSOCIATION"){
 		return $("<span class='glyphicon glyphicon-home' style='color:#4d94ff'></span>");
 	}
-	if(util.includes("COSTCO")){
+	if(util === "COSTCO"){
 	   	return $("<span class='glyphicon glyphicon-credit-card' style='color:#ff4d4d'></span>");
 	}
 
