@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+	<head>
+		<title>RentMate calculator</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Calculator for RentMate">
+		<meta name="author" content="Kiran Bhadury">
+		<!--Getting the hang of Bootstrap!-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="RMCSS.css">
+	</head>
+	
+	<body>
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html" style="color:#4d94ff;">RentMate</a>
+			</div>
+			<div class="container">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#rent">Rent</a></li>
+					<li><a href="#utilities">Utilities</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<div class="container-fluid text-center">
+			<h2>I want to...</h2>
+		</div>
+		
+		<div class="container">
+			<a href="#rent">
+				<div class="jumbotron calc-pg">
+				<h1>Divide Rent</h1>
+				</div>
+			</a>
+		</div>
+		
+		<div class="container">
+			<a href="#utilities">
+				<div class="jumbotron util-pg">
+					<h1>Divide Utilities</h1>
+				</div>
+			</a>
+		</div>
+		
+		<div class="container" id="rent-container">
+		
+			<h2 id="rent">Divide Rent</h2>
+			
+			<div class="row">
+				<div class="col-sm-7">
+					
+					<!--Start nested cols-->
+					<div class="row">
+					
+						<div class="col-sm-12 input-col-border" id="rent-amt-col">
+							<h4>What's the rent on the apartment?</h4>
+							<form>
+								<div class="form-group">
+									<label for="rent-amt">Rent ($/month)</label>
+									<input class="form-control" type="number" id="rent-amt" style="width:50%;">
+								</div>
+							</form>
+						</div>
+
+						<div class="col-sm-12 input-col-border" id="name-sqft-col">
+							<h4>How large is each room, and who occupies each one?</h4>
+							<h5>Occupants must be comma-separated (example: Tom, Jerry)</h5>
+							<h5>To add common areas like a living room or kitchen, just include everyone as an "occupant" of that room</h5>
+							<ul id="room-list" style="list-style-type: none;"> <!--This will be filled in with names+sqft-->
+							</ul>
+							<p id="room-number">Room #1:</p>
+							<form class="form-inline">
+								<div class="form-group">
+									<label for="sqft">Square feet:</label>
+									<input class="form-control" type="number" id="sqft">
+									<label for="names">Names of occupants:</label>
+									<input class="form-control" type="text" id="names">
+								</div>
+								<button class="btn btn-success" id="name-sqft-btn" disabled="disabled" style="margin-top:20px;">Add room to list</button>
+							</form>
+						</div>
+						
+						<div class="col-sm-6 pad-form-btns">
+							<button class="btn btn-success form-button" id="submit-rent" disabled="disabled">Submit</button>
+							<button class="btn btn-danger form-button" id="reset-rent" disabled="disabled">Reset</button>
+						</div>
+						
+					</div> <!--Inner row-->
+					<!--End nested cols-->
+				</div> <!--Outer col-->
+				
+				<div class="col-sm-5" id="rent-result">
+					<table class="table" id="rent-table"><!--This will be filled by the results-->
+					</table>
+				</div>
+				
+			</div> <!--Outer row-->
+			
+		</div> <!--Container-->
+		
+		<!--Colored bar to separate sections-->
+		<div class="container-fluid separator" style="background-color:#c3def7;">&nbsp;</div>
+		
+		<div class="container" id="utils-container">
+		
+			<h2 id="utilities">Divide Utilities</h2>
+			
+			<div class="row">
+				<div class="col-sm-7">
+				
+					<!--Start nested cols-->
+					<div class="row" id="util-init-input">
+						<div class="col-sm-12 input-col-border" id="util-rmts-col">
+							<h4>Please list the names of your roommates (including yourself)</h4>
+							<h5>Must be comma-separated (example: Donald, Huey, Dewey, Louie)</h5>
+							<form>
+								<div class="form-group">
+									<label for="util-rmts">Roommates:</label>
+									<input class="form-control" type="text" id="util-rmts" style="display:inline; width:65%;">
+									<button class="btn btn-success" id="util-rmts-btn" disabled="disabled"><span class="glyphicon glyphicon-ok"></span></button>
+								</div>
+							</form>
+						</div>
+						
+						<div class="col-sm-12 input-col-border" id="util-types-col" style="display:none;">
+							<h4>Which utilities need to be paid for, and who uses them?</h4>
+							<h5>Common utilities include water, gas/heat, electricity, and Internet</h5>
+							<ul id="util-list"> <!--This will be filled with utilities-->
+							</ul>
+							<p id="util-number">Utility #1:</p>
+							<form class="form-inline">
+								<div class="form-group">
+									<label for="util-type">Utility:</label>
+									<input class="form-control" type="text" id="util-type">
+									<label for="util-cost">$/month:</label>
+									<input class="form-control" type="number" id="util-cost">
+								</div>
+								<br>
+								Used by
+								<div class="form-group" id="checkbox-div"> <!--This will be filled in with names-->
+								</div>
+								<br>
+								<button class="btn btn-success" id="add-util-btn" disabled="disabled">Add utility to list</button>
+							</form>
+							
+						</div>
+						
+						<div class="col-sm-6 pad-form-btns">
+							<button class="btn btn-success form-button" id="submit-util" disabled="disabled">Submit</button>
+							<button class="btn btn-danger form-button" id="reset-util" disabled="disabled">Reset</button>
+						</div>
+						
+					</div> <!--Inner row-->
+					<!--End nested cols-->
+				</div> <!--Outer col-->
+				
+				<div class="col-sm-5" id="util-result">
+					<table class="table" id="util-table"> <!--This will be filled by the results-->
+					</table>
+				</div>
+				
+			</div> <!--Outer row-->
+			
+		</div> <!--Container-->
+		
+		<footer>
+			<p>
+				Created by Kiran Bhadury
+				<a href="https://github.com/kbhadury"><img src="RMImages/GitHub-Mark-32px.png" height="16px" alt="github logo"></a>
+			</p>
+		</footer>
+		
+		<!--Load scripts-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="RMJS.js"></script>
+	</body>
+</html>

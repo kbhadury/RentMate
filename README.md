@@ -9,5 +9,3 @@ that use really fancy algorithms to keep everyone happy, and if you're having se
 to give them a look.  RentMate is not designed to be a revolutionary tool for getting everyone to pay their landlords on time - 
 it's more of a personal project, just me trying to get started with Bootstrap and jQuery.  However, I'd be delighted if you tried it
 out!
-
-*The code is on the gh-pages branch

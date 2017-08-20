@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+	<head>
+		<title>RentMate</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="A handy tool to split rent costs">
+		<meta name="author" content="Kiran Bhadury">
+		<!--We'll use Bootstrap-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<!--My personal CSS file (put second to override Bootstrap)-->
+		<link rel="stylesheet" href="RMCSS.css">
+	</head>
+	
+	<body>
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#" style="color:#4d94ff;">RentMate</a>
+			</div>
+			<div class="container">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#about">About</a></li>
+					<li><a href="#code">Code</a></li>
+				</ul>
+			</div>	
+		</nav>
+		
+		<div class="jumbotron main-pg">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-6 col-sm-offset-6"> <!--Multiple offsets for different screens-->
+						<h1>RentMate</h1>
+						<h3>A simple tool to split rent and utility costs</h3>
+						<a class="btn btn-primary try-it" href="RentMateCalc.html">Try it out!</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container"> <!--Full page container-->
+			
+			<div class="row">
+				<h2 id="about">About</h2>
+				<div class="col-md-6 main-pg-text">
+					<p>
+					Whether you're a college student moving into your first apartment or
+					a seasoned renter who knows the ropes, you'll need to pay rent.  And 
+					with roommates that can get a bit tricky.  How do you make sure 
+					everyone's paying their fair share?  If you never use the TV you 
+					shouldn't have to pay for cable, right?
+					</p>
+					<p>
+					RentMate is an objective tool for splitting rent and utility costs 
+					based on key factors, such as room size and utility usage.  You pay
+					for what you use, whether it's bedroom space or electricity.  Just plug 
+					in the numbers and let RentMate determine how much each person owes 
+					per month &mdash; no more arguing, haggling, bartering, or quibbling.
+					</p>
+				</div>
+	
+				<div class="col-md-6">
+					<img src="RMImages/sample-result.PNG" class="main-pg-img" title="Example" alt="sample-result.PNG">
+				</div>
+			</div> <!--row-->
+			
+			<div class="row separator">&nbsp;</div>
+			
+			<div class="row">
+				<h2 class="non-code" id="code"><span class="x">Code</span></h2>
+				<h2 class="code" style="display:none;"><span class="x">&lt;h2&gt;Code&lt;/h2&gt;</span></h2>
+				<div class="col-md-6" style="border-bottom:5px double #a5cdf3;">
+					<p>
+					The code behind RentMate is hosted on 
+					<a href="https://github.com/kbhadury/RentMate">GitHub</a> if you'd
+					like to take a look.
+					</p>
+					<p>
+					The webpages were built using
+					<a href="https://notepad-plus-plus.org/">Notepad++</a>, the 
+					<a href="https://getbootstrap.com">Bootstrap library</a> (plus 
+					<a href="http://glyphicons.com/">Glyphicons!</a>) and a lot of 
+					<a href="https://imgur.com/gallery/9qzBYbH">patience</a>.  The website
+					actually functions thanks to JavaScript and 
+					<a href="https://jquery.com">jQuery</a>.
+					</p>
+					<p>
+					Special thanks to
+					<a href="https://www.codecademy.com/">Codecademy</a> for teaching me how
+					to build my first website.
+					</p>
+				</div>
+				<div class="col-md-6 tech">
+					<a href="https://notepad-plus-plus.org/"><img class="tech-slide" src="RMImages/nppp.png" alt="Notepad++ logo"></a>
+					<a href="https://getbootstrap.com"><img class="tech-slide" src="RMImages/bootstrap.jpg" alt="Bootstrap logo"></a>
+					<a href="https://jquery.com"><img class="tech-slide" src="RMImages/jquery.png" alt="jQuery logo"></a>
+				</div>
+			</div> <!--row-->
+			
+		</div> <!--container-->
+		
+		<footer>
+			<p>
+				Created by Kiran Bhadury
+				<a href="https://github.com/kbhadury"><img src="RMImages/GitHub-Mark-32px.png" height="16px" alt="github logo"></a>
+			</p>
+		</footer>
+		
+		<!--Load up jQuery-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<!--My personal scripts-->
+		<script src="RMJS.js"></script>
+	</body>
+</html>

@@ -1,0 +1,159 @@
+.testdiv1{ /*Add this class to highlight an element red*/
+	background-color: #ff0000;
+}
+
+.testdiv2{ /*Add this class to highlight an element green*/
+	background-color: #00ff00;
+}
+
+body{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 16px;
+	background-color: #f2f2f2; /*Off-white*/
+}
+
+p{ /*Justify all paragraphs*/
+	text-align: justify;
+}
+
+footer{
+	margin-top: 20px;
+	margin-left: 30px;
+	color: #999999;
+}
+
+footer a{
+	margin-left: 20px;
+}
+
+.separator{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.navbar{
+	background-color: #f2f2f2;
+	margin-bottom: 0px;
+}
+
+.jumbotron.main-pg{
+	text-align: center;
+	color: #4d94ff;
+	background-image: url("RMImages/mainpage.jpg");
+	background-size: cover;
+	padding-bottom: 192px;
+}
+
+.jumbotron.calc-pg{
+	text-align: center;
+	color: #000000;
+	background-image: url("RMImages/rent-sheet.jpg");
+	background-size: cover;
+}
+
+.jumbotron.util-pg{
+	text-align: center;
+	color: #000000;
+	background-image: url("RMImages/utility.jpg");
+	background-size: cover;
+}
+
+/*The button on the main page*/
+.try-it{
+	background-color: #4d94ff; /*Light blue*/
+	color: #ffffff;
+	width: 50%;
+	font-size: 1.25em;
+	margin-top: 10px;
+	transition-duration: 0.4s;
+}
+
+.try-it:hover{
+	background-color: #1a75ff; /*Darker blue*/
+	color: #ffffff;
+}
+
+.try-it:focus{
+	background-color: #1a75ff;
+	color: #ffffff;
+}
+
+.try-it:focus:active{
+	background-color: #005ce6; /*Very dark blue*/
+	color: #ffffff;
+}
+
+.main-pg-text{
+	border-bottom: 5px double #a5cdf3;
+	padding-top: 20px;
+}
+
+.main-pg-img{
+	height: 240px;
+	display: block;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tech{
+	text-align: center;
+	padding-top: 40px;
+}
+
+.tech-slide{
+	height: 80px;
+	display: inline;
+	margin-left: 10px;
+	margin-right: 10px;
+	opacity: .5;
+}
+
+.code{
+	font-family: monospace;
+}
+
+/*Calculation page*/
+.input-col-border{
+	border-left: 5px solid gray;
+}
+
+.form-button{
+	width: 40%;
+}
+
+.pad-form-btns{
+	margin-top: 40px;
+	margin-bottom: 20px;
+}
+
+#room-list, #util-list{
+	list-style: none;
+	padding-left: 0px;
+}
+
+#rent-result, #util-result{
+	border: 3px solid #66a3ff;
+	border-radius: 5px;
+	display: none; /*Hide by default*/
+	background-color: #ffffff;
+}
+
+#checkbox-div{
+	margin-right: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#checkbox-div input{
+	margin-left: 20px;
+	margin-right: 5px;
+}
+
+tr{ /*For some reason Bootstrap isn't doing this automatically*/
+	border-bottom: 1px solid #ddd;
+}
+
+th, td{
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
