@@ -1,5 +1,5 @@
 # RentMate
-https://kbhadury.github.io/RentMate
+https://kbhadury.github.io/RentMate/
 
 Split up rent and utility costs!
 
